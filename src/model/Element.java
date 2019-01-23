@@ -1,6 +1,11 @@
 package model;
 
 public abstract class Element {
-    private Point lessPoint;
-    private Point largerPoint;
+    protected Point lessPoint;
+    protected Point largerPoint;
+
+    public Element(Point less, Point large){
+        lessPoint = less;
+        largerPoint = large;
+    }
 }

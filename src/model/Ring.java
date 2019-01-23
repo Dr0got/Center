@@ -4,25 +4,27 @@ import java.util.ArrayList;
 
 public class Ring {
 
-    //radius of the circle, that is closer to the center
-    private double r;
-
+    private int level;
     private ArrayList<Element> elements;
 
-    public Ring(double r){
-        this.r = r;
+    public Ring(int level){
+        this.level = level;
         elements = new ArrayList(4);
     }
 
-    public double getR() {
-        return r;
+    public int getLevel(){
+        return this.level;
     }
 
-    public void setR(double r) {
-        this.r = r;
+    public void generateElements(){
+        double S = Math.PI*50;
     }
 
     public void addElement(Element elem){
         elements.add(elem);
+    }
+
+    public void removeElement(Element elem){
+        elements.remove(elem);
     }
 }

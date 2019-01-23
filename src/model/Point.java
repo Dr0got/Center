@@ -14,8 +14,6 @@ public class Point {
         this.yCenter = yCenter;
     }
 
-
-
     public void setAngle(double angle) {
         this.angle = angle;
     }
