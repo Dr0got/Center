@@ -1,6 +1,13 @@
 package model;
 
+import java.util.Random;
+
 public interface Moveable {
-    public enum Direction{CLOCKWISE, ANTICLOCKWISE};
-    public void move(double distance);
+    enum Direction{CLOCKWISE, ANTICLOCKWISE};
+    void move(double distance);
+
+    static Direction getRandomDirection(){
+        int temp = (new Random()).nextInt(2);
+        return (temp == 0) ? Direction.CLOCKWISE : Direction.ANTICLOCKWISE;
+    }
 }

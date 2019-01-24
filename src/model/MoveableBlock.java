@@ -3,7 +3,7 @@ package model;
 public class MoveableBlock extends Element implements Moveable{
     Direction direct;
 
-    public MoveableBlock(Point less, Point large, int l, Direction dir){
+    public MoveableBlock(Point less, Point large, Direction dir){
         super(less, large);
         direct = dir;
     }

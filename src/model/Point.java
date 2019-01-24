@@ -1,28 +1,31 @@
 package model;
 
-public class Point {
+public class Point implements Comparable<Point>{
 
-    private double r;
     private double angle;
-    private double xCenter;
-    private double yCenter;
 
-    public Point(double r, double angle, double xCenter, double yCenter){
-        this.r = r;
-        this.angle = angle;
-        this.xCenter = xCenter;
-        this.yCenter = yCenter;
+    public Point(double angle){
+        setAngle(angle);
     }
 
     public void setAngle(double angle) {
-        this.angle = angle;
+        if(angle < 0)
+            this.angle = 360 + angle;
+        else if(angle > 360)
+            this.angle = angle - 360;
+        else
+            this.angle = angle;
     }
 
     public double getAngle() {
         return angle;
     }
 
-    public double getR() {
+    @Override
+    public int compareTo(Point p){
+        return (int)(this.angle - p.angle);
+    }
+/*    public double getR() {
         return r;
     }
 
@@ -36,5 +39,5 @@ public class Point {
 
     public double getX(){
         return r * Math.cos(angle);
-    }
+    }*/
 }

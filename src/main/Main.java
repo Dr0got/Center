@@ -5,7 +5,6 @@ import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.layout.HBox;
-import javafx.scene.shape.ArcType;
 import javafx.stage.Stage;
 import model.Model;
 import view.MainViewer;
@@ -23,9 +22,6 @@ public class Main extends Application {
         Canvas canvas = new Canvas();
         canvas.setHeight(settings.defaultWindowHeight);
         canvas.setWidth(settings.defaultWindowWidth);
-
-        /*ctx.strokeArc(300, 300, 200, 200, 0, 270, ArcType.OPEN);
-        ctx.strokeArc(275, 275, 250, 250, 0, 270, ArcType.OPEN);*/
 
         root.getChildren().add(canvas);
         primaryStage.setTitle("Center");
@@ -58,6 +54,7 @@ public class Main extends Application {
         settings.startRadius = 100;
 
         settings.part = 0.33;
+        settings.moveablePart = 0.33;
         settings.setSettings();
 
         System.exit(0);

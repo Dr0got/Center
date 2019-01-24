@@ -18,6 +18,7 @@ public class Settings {
     public double ringWidth;
     public double startRadius;
     public double part;
+    public double moveablePart;
     public double blocksize;
 
     public void setSettings(){
@@ -47,7 +48,6 @@ public class Settings {
         double S1 = Math.PI * Math.pow(startRadius, 2);
         double S2 = Math.PI * Math.pow(startRadius + ringWidth, 2);
         double S = S2 - S1;
-        double resultS = S * part;
-        return resultS;
+        return S * part;
     }
 }

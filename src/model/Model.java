@@ -21,6 +21,7 @@ public class Model {
         ++level;
         for(int i = 0; i <= level; ++i){
             rings[i] = new Ring(i+1);
+            rings[i].generateElements((int)(rings[i].getSquare(settings.startRadius, settings.ringWidth)/settings.blocksize), settings.part, settings.moveablePart);
         }
     }
 
