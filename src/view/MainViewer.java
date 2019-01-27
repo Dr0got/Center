@@ -5,37 +5,41 @@ import javafx.scene.shape.ArcType;
 import main.Settings;
 import javafx.scene.canvas.GraphicsContext;
 import model.Model;
-import model.Ring;
 
-import java.util.function.Consumer;
+import java.util.Arrays;
 
 public class MainViewer {
     private Settings set;
     private GraphicsContext ctx;
+    private RingViewer[] ringViewers;
 
     public MainViewer(Settings settings, GraphicsContext ctx){
         set = settings;
         this.ctx = ctx;
+        ctx.setLineWidth(5);
     }
 
-    public void drawStart(){
-        drawWeb();
+    //Before start of each level
+    public void refreshModel(Model model){
+        ringViewers = new RingViewer[model.getLevel()+1];
+        Arrays.asList(model.getRings()).stream().forEach(ring -> ringViewers[ring.getLevel()-1] = new RingViewer(ring, set));
+    }
+
+    public void drawStart(Model model){
+        //drawWeb();
 
         ctx.fillArc(set.xCenter - set.startRadius/2, set.yCenter - set.startRadius/2, set.startRadius, set.startRadius, 0, 360, ArcType.OPEN );
         ctx.setStroke(Color.WHITE);
         ctx.strokeText("10.00", set.xCenter - (set.startRadius/1.5), set.yCenter - (set.startRadius/2));
         ctx.setStroke(Color.BLACK);
+
+        refreshModel(model);
+        drawRings();
     }
 
-    public void drawModel(Model model){
-        Consumer<Ring> function = ring -> {
-            double radius = set.startRadius + ring.getLevel()*set.ringWidth;
-            double leftPoint = set.xCenter - radius/2;
-            double topPoint = set.yCenter - radius/2;
-            ctx.strokeArc(leftPoint, topPoint, radius, radius, 0, 360, ArcType.OPEN);
-        };
-
-        model.forEachRing(function);
+    public void drawRings(){
+        for(RingViewer rv : ringViewers)
+            rv.drawRing(set, ctx);
     }
 
     private void drawWeb(){

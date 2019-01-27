@@ -1,10 +1,12 @@
 package main;
 
+import controller.Controller;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.layout.HBox;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import model.Model;
 import view.MainViewer;
@@ -31,8 +33,11 @@ public class Main extends Application {
         GraphicsContext ctx = canvas.getGraphicsContext2D();
         Model model = new Model(settings);
         MainViewer mv = new MainViewer(settings, ctx);
-        mv.drawStart();
-        mv.drawModel(model);
+        mv.drawStart(model);
+
+        Controller controller = new Controller(model, mv, settings);
+        //Thread.sleep(6000);
+        controller.startLevel();
     }
 
 
@@ -55,6 +60,14 @@ public class Main extends Application {
 
         settings.part = 0.33;
         settings.moveablePart = 0.33;
+        settings.speed = 1.0;
+        settings.fps = 25;
+
+        settings.defaultColor = Color.BLACK;
+        settings.blockColor = Color.NAVY;
+        settings.moveableBlockColor = Color.RED;
+        settings.playerColor = Color.GOLD;
+
         settings.setSettings();
 
         System.exit(0);

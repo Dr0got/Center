@@ -25,7 +25,12 @@ public class Ring {
         //Direction of element's moving
         Moveable.Direction direct = Moveable.getRandomDirection();
         for(int i = 0; i < amount; ++i) {
-            Point[] points = generateElement(angle);
+            Point[] points;
+            try {
+                points = generateElement(angle);
+            }catch(StackOverflowError error){
+                points = generateElement(angle);
+            }
             elements.add((i <= amount/3) ? new Block(points[0], points[1]) : new MoveableBlock(points[0], points[1], direct));
         }
     }

@@ -1,11 +1,13 @@
 package main;
 
 import com.google.gson.Gson;
+import javafx.scene.paint.Color;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.nio.file.Path;
 import java.util.Scanner;
 
 public class Settings {
@@ -20,6 +22,15 @@ public class Settings {
     public double part;
     public double moveablePart;
     public double blocksize;
+    public double speed;
+    public double fps;
+
+    public Color defaultColor;
+    public Color blockColor;
+    public Color moveableBlockColor;
+    public Color playerColor;
+
+    public Path playerIcon;
 
     public void setSettings(){
         Gson gson = new Gson();

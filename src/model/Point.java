@@ -25,19 +25,4 @@ public class Point implements Comparable<Point>{
     public int compareTo(Point p){
         return (int)(this.angle - p.angle);
     }
-/*    public double getR() {
-        return r;
-    }
-
-    public void setR(double r) {
-        this.r = r;
-    }
-
-    public double getY(){
-        return r * Math.sin(angle);
-    }
-
-    public double getX(){
-        return r * Math.cos(angle);
-    }*/
 }

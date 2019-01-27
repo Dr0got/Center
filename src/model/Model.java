@@ -6,7 +6,7 @@ import java.util.function.Consumer;
 
 public class Model {
     private Ring[] rings;
-    Settings settings;
+    private Settings settings;
     private int level;
 
     public Model(Settings settings){
@@ -25,8 +25,27 @@ public class Model {
         }
     }
 
+    public void move(){
+        Consumer<Ring> function = ring -> {
+            ring.forEachElement(element -> {
+                if(element instanceof MoveableBlock)
+                    ((MoveableBlock) element).move(settings.speed);
+            });
+        };
+
+        forEachRing(function);
+    }
+
     public void forEachRing(Consumer<Ring> function){
         for(Ring ring : rings)
             function.accept(ring);
+    }
+
+    public int getLevel(){
+        return level;
+    }
+
+    public Ring[] getRings(){
+        return rings;
     }
 }
